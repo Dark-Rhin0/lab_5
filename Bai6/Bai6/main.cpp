@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <direct.h>
 
 #include "KhachHangA.h"
 #include "KhachHangB.h"
@@ -12,8 +13,14 @@ int main() {
     ifstream fin("XYZ.INP");
     ofstream fout("XYZ.OUT");
 
-    if (!fin) {
-        cout << "Khong mo duoc file!";
+
+    char cwd[1000];
+    _getcwd(cwd, sizeof(cwd));
+    cout << "Dang tim file tai: " << cwd << endl;
+
+    if (!fin)
+    {
+        cout << "Khong mo duoc file!" << endl;
         return 0;
     }
 
