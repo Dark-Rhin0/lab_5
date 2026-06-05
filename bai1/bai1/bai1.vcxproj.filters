@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NhaVien.cpp">
+    <ClCompile Include="NhanVien.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NhanVienSanXuat.cpp">
+    <ClCompile Include="NhanVienSX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NhanVienVanPhong.cpp">
+    <ClCompile Include="NhanVienVP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CongTy.cpp">
@@ -35,10 +35,10 @@
     <ClInclude Include="NhanVien.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NhanVienSanXuat.h">
+    <ClInclude Include="NhanVienSX.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NhanVienVanPhong.h">
+    <ClInclude Include="NhanVienVP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CongTy.h">

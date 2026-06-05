@@ -1,13 +1,22 @@
+#include <iostream>
+#include <iomanip>
 #include "CongTy.h"
+
+using namespace std;
 
 int main()
 {
     CongTy ct;
 
-    ct.NhapDS();
+    ct.NhapDanhSach();
 
-    cout << "\n========== DANH SACH NHAN VIEN ==========\n";
-    ct.XuatDS();
+    cout << "\n=============================\n";
+    cout << "     DANH SACH NHAN VIEN\n";
+    cout << "=============================\n";
+
+    ct.XuatDanhSach();
+
+    cout << fixed << setprecision(0);
 
     cout << "\nTong luong cong ty phai tra: "
         << ct.TongLuong()
@@ -15,7 +24,7 @@ int main()
 
     ct.NVSXLuongThapNhat();
 
-    ct.NVVPTuoiCaoNhat();
+    ct.NVVPLonTuoiNhat();
 
     return 0;
 }

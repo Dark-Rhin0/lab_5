@@ -9,9 +9,9 @@ using namespace std;
 class NhanVien
 {
 protected:
-    string hoTen;
-    string ngaySinh;
-    double luong;
+    string HoTen;
+    int NamSinh;
+    double Luong;
 
 public:
     NhanVien();
@@ -22,8 +22,9 @@ public:
 
     virtual void TinhLuong() = 0;
 
-    double LayLuong() const;
-    int TinhTuoi() const;
+    double GetLuong() const;
+    int GetNamSinh() const;
+    string GetHoTen() const;
 };
 
 #endif

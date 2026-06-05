@@ -4,24 +4,24 @@
 #include <vector>
 
 #include "NhanVien.h"
-#include "NhanVienSanXuat.h"
-#include "NhanVienVanPhong.h"
+#include "NhanVienSX.h"
+#include "NhanVienVP.h"
 
 class CongTy
 {
 private:
-    vector<NhanVien*> ds;
+    vector<NhanVien*> DS;
 
 public:
     ~CongTy();
 
-    void NhapDS();
-    void XuatDS();
+    void NhapDanhSach();
+    void XuatDanhSach();
 
     double TongLuong();
 
     void NVSXLuongThapNhat();
-    void NVVPTuoiCaoNhat();
+    void NVVPLonTuoiNhat();
 };
 
 #endif

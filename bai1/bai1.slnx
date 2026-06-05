@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="bai1/bai1.vcxproj" Id="6d31f512-9583-4671-903f-e3abb6fa0c4e" />
+</Solution>

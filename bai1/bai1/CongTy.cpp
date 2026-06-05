@@ -1,12 +1,15 @@
 #include "CongTy.h"
+#include <iomanip>
 
 CongTy::~CongTy()
 {
-    for (NhanVien* nv : ds)
+    for (NhanVien* nv : DS)
+    {
         delete nv;
+    }
 }
 
-void CongTy::NhapDS()
+void CongTy::NhapDanhSach()
 {
     int nSX, nVP;
 
@@ -18,32 +21,34 @@ void CongTy::NhapDS()
 
     for (int i = 0; i < nSX; i++)
     {
-        cout << "\nNhan vien san xuat thu " << i + 1 << endl;
+        cout << "\nNhan vien san xuat thu "
+            << i + 1 << endl;
 
-        NhanVien* nv = new NhanVienSanXuat();
+        NhanVien* nv = new NhanVienSX();
 
         nv->Nhap();
         nv->TinhLuong();
 
-        ds.push_back(nv);
+        DS.push_back(nv);
     }
 
     for (int i = 0; i < nVP; i++)
     {
-        cout << "\nNhan vien van phong thu " << i + 1 << endl;
+        cout << "\nNhan vien van phong thu "
+            << i + 1 << endl;
 
-        NhanVien* nv = new NhanVienVanPhong();
+        NhanVien* nv = new NhanVienVP();
 
         nv->Nhap();
         nv->TinhLuong();
 
-        ds.push_back(nv);
+        DS.push_back(nv);
     }
 }
 
-void CongTy::XuatDS()
+void CongTy::XuatDanhSach()
 {
-    for (NhanVien* nv : ds)
+    for (NhanVien* nv : DS)
     {
         nv->Xuat();
         cout << endl;
@@ -54,25 +59,27 @@ double CongTy::TongLuong()
 {
     double tong = 0;
 
-    for (NhanVien* nv : ds)
-        tong += nv->LayLuong();
+    for (NhanVien* nv : DS)
+    {
+        tong += nv->GetLuong();
+    }
 
     return tong;
 }
 
 void CongTy::NVSXLuongThapNhat()
 {
-    NhanVienSanXuat* minNV = nullptr;
+    NhanVienSX* minNV = nullptr;
 
-    for (NhanVien* nv : ds)
+    for (NhanVien* nv : DS)
     {
-        NhanVienSanXuat* sx =
-            dynamic_cast<NhanVienSanXuat*>(nv);
+        NhanVienSX* sx =
+            dynamic_cast<NhanVienSX*>(nv);
 
         if (sx)
         {
             if (minNV == nullptr ||
-                sx->LayLuong() < minNV->LayLuong())
+                sx->GetLuong() < minNV->GetLuong())
             {
                 minNV = sx;
             }
@@ -81,24 +88,25 @@ void CongTy::NVSXLuongThapNhat()
 
     if (minNV)
     {
-        cout << "\nNhan vien san xuat luong thap nhat:\n";
-        minNV->Xuat();
+        cout << "\nNhan vien san xuat luong thap nhat: "
+            << minNV->GetHoTen()
+            << endl;
     }
 }
 
-void CongTy::NVVPTuoiCaoNhat()
+void CongTy::NVVPLonTuoiNhat()
 {
-    NhanVienVanPhong* maxNV = nullptr;
+    NhanVienVP* maxNV = nullptr;
 
-    for (NhanVien* nv : ds)
+    for (NhanVien* nv : DS)
     {
-        NhanVienVanPhong* vp =
-            dynamic_cast<NhanVienVanPhong*>(nv);
+        NhanVienVP* vp =
+            dynamic_cast<NhanVienVP*>(nv);
 
         if (vp)
         {
             if (maxNV == nullptr ||
-                vp->TinhTuoi() > maxNV->TinhTuoi())
+                vp->GetNamSinh() < maxNV->GetNamSinh())
             {
                 maxNV = vp;
             }
@@ -107,11 +115,8 @@ void CongTy::NVVPTuoiCaoNhat()
 
     if (maxNV)
     {
-        cout << "\nNhan vien van phong tuoi cao nhat:\n";
-        maxNV->Xuat();
-
-        cout << "Tuoi: "
-            << maxNV->TinhTuoi()
+        cout << "\nNhan vien van phong lon tuoi nhat: "
+            << maxNV->GetHoTen()
             << endl;
     }
 }
