@@ -23,11 +23,15 @@ void NhanVien::Nhap() {
     cin >> luongCoBan;
 }
 
-void NhanVien::Xuat() {
+void NhanVien::XuatThongTin() {
     cout << "Ma NV: " << maNV << endl;
     cout << "Ho ten: " << hoTen << endl;
     cout << "Tuoi: " << tuoi << endl;
     cout << "SDT: " << sdt << endl;
     cout << "Email: " << email << endl;
     cout << "Luong co ban: " << luongCoBan << endl;
+}
+
+void NhanVien::Xuat() {
+    XuatThongTin();
 }

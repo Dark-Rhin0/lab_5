@@ -2,6 +2,8 @@
 #include "LapTrinhVien.h"
 #include "KiemChungVien.h"
 
+#include <iomanip>
+
 CongTy::~CongTy() {
     for (NhanVien* nv : ds)
         delete nv;
@@ -9,6 +11,7 @@ CongTy::~CongTy() {
 
 void CongTy::NhapDS() {
     int n;
+
     cout << "Nhap so nhan vien: ";
     cin >> n;
 
@@ -28,16 +31,25 @@ void CongTy::NhapDS() {
             nv = new KiemChungVien();
 
         nv->Nhap();
+
         ds.push_back(nv);
     }
 }
 
 void CongTy::XuatDS() {
+    if (ds.empty()) {
+        cout << "Khong co nhan vien\n";
+        return;
+    }
+
     for (NhanVien* nv : ds)
         nv->Xuat();
 }
 
 double CongTy::LuongTB() {
+    if (ds.empty())
+        return 0;
+
     double tong = 0;
 
     for (NhanVien* nv : ds)
@@ -47,33 +59,61 @@ double CongTy::LuongTB() {
 }
 
 void CongTy::LuongDuoiTB() {
+    if (ds.empty()) {
+        cout << "Khong co nhan vien\n";
+        return;
+    }
+
     double tb = LuongTB();
 
-    cout << "\nNhan vien co luong duoi trung binh:\n";
-
-    for (NhanVien* nv : ds)
+    for (NhanVien* nv : ds) {
         if (nv->TinhLuong() < tb)
             nv->Xuat();
+    }
 }
 
 void CongTy::LuongCaoNhat() {
+    if (ds.empty()) {
+        cout << "Khong co nhan vien\n";
+        return;
+    }
+
     NhanVien* maxNV = ds[0];
 
-    for (NhanVien* nv : ds)
+    for (NhanVien* nv : ds) {
         if (nv->TinhLuong() > maxNV->TinhLuong())
             maxNV = nv;
+    }
 
-    maxNV->Xuat();
+    maxNV->XuatThongTin();
+
+    cout << "Luong: "
+        << fixed
+        << setprecision(0)
+        << maxNV->TinhLuong()
+        << endl;
 }
 
 void CongTy::LuongThapNhat() {
+    if (ds.empty()) {
+        cout << "Khong co nhan vien\n";
+        return;
+    }
+
     NhanVien* minNV = ds[0];
 
-    for (NhanVien* nv : ds)
+    for (NhanVien* nv : ds) {
         if (nv->TinhLuong() < minNV->TinhLuong())
             minNV = nv;
+    }
 
-    minNV->Xuat();
+    minNV->XuatThongTin();
+
+    cout << "Luong: "
+        << fixed
+        << setprecision(0)
+        << minNV->TinhLuong()
+        << endl;
 }
 
 void CongTy::LTVLuongMax() {
@@ -90,8 +130,18 @@ void CongTy::LTVLuongMax() {
         }
     }
 
-    if (maxLTV)
-        maxLTV->Xuat();
+    if (maxLTV == nullptr) {
+        cout << "Khong co lap trinh vien\n";
+        return;
+    }
+
+    maxLTV->XuatThongTin();
+
+    cout << "Luong: "
+        << fixed
+        << setprecision(0)
+        << maxLTV->TinhLuong()
+        << endl;
 }
 
 void CongTy::KCVLuongMin() {
@@ -108,6 +158,16 @@ void CongTy::KCVLuongMin() {
         }
     }
 
-    if (minKCV)
-        minKCV->Xuat();
+    if (minKCV == nullptr) {
+        cout << "Khong co kiem chung vien\n";
+        return;
+    }
+
+    minKCV->XuatThongTin();
+
+    cout << "Luong: "
+        << fixed
+        << setprecision(0)
+        << minKCV->TinhLuong()
+        << endl;
 }

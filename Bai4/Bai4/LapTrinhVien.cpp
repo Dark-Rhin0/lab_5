@@ -1,4 +1,5 @@
 #include "LapTrinhVien.h"
+#include <iomanip>
 
 void LapTrinhVien::Nhap() {
     NhanVien::Nhap();
@@ -7,13 +8,21 @@ void LapTrinhVien::Nhap() {
     cin >> soGioOvertime;
 }
 
-void LapTrinhVien::Xuat() {
-    cout << "\n===== LAP TRINH VIEN =====\n";
-    NhanVien::Xuat();
-    cout << "So gio overtime: " << soGioOvertime << endl;
-    cout << "Luong: " << TinhLuong() << endl;
-}
-
 double LapTrinhVien::TinhLuong() {
     return luongCoBan + soGioOvertime * 200000;
+}
+
+void LapTrinhVien::Xuat() {
+    cout << "\n===== LAP TRINH VIEN =====\n";
+
+    XuatThongTin();
+
+    cout << "So gio overtime: "
+        << soGioOvertime << endl;
+
+    cout << "Luong: "
+        << fixed
+        << setprecision(0)
+        << TinhLuong()
+        << endl;
 }

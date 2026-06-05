@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class NhanVien {
@@ -19,6 +20,8 @@ public:
 
     virtual void Nhap();
     virtual void Xuat();
+    virtual void XuatThongTin();
+
     virtual double TinhLuong() = 0;
 };
 
